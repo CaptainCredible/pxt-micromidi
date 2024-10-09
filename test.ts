@@ -12,7 +12,7 @@ basic.showLeds(`
 . . . . .
 `)
 
-midiInOut.setMidiPins(SerialPin.P2, SerialPin.P1);
+midiInOut.setMidiPins(SerialPin.P8, SerialPin.P1);
 
 input.onButtonPressed(Button.A, function () {
     let myNote = randint(40, 80)
@@ -73,7 +73,7 @@ function handleNoteOn(note: number, velocity: number) {
     if (velocity > 0) {
         // Respond to the note on event
         //basic.showNumber(note) // Display note number on the LED matrix
-        music.playTone(helperNoteFreq[note % 24], music.beat(BeatFraction.Half)) // Play a tone based on note number
+        music.playTone(helperNoteFreq[note % 24]*2, 50) // Play a tone based on note number
     } else {
         basic.clearScreen() // Clear LED if velocity is 0 (Note Off)
     }
